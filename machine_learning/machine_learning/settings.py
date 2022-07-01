@@ -1,15 +1,14 @@
 import os
 from pathlib import Path
 
-import secrets
+import ml_secrets
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+SECRET_KEY = ml_secrets.SECRET_KEY
 
-SECRET_KEY = secrets.SECRET_KEY
-
-DEBUG = str(os.getenv('DJANGO_DEBUG', False)).lower().strip() == 'true'
-ALLOWED_HOSTS = ['127.0.0.1', '0.0.0.0']
+DEBUG = str(os.getenv('DJANGO_DEBUG', True)).lower().strip() == 'true'
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', '0.0.0.0']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -18,6 +17,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
     'core',
 ]
 
@@ -58,7 +58,6 @@ DATABASES = {
     }
 }
 
-
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
@@ -74,7 +73,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 LANGUAGE_CODE = 'en-us'
 
 TIME_ZONE = 'Asia/Tehran'
@@ -86,3 +84,8 @@ USE_TZ = True
 STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+REST_FRAMEWORK = {
+
+    'DATETIME_FORMAT': "%m/%d/%Y %H:%M:%S",
+}
