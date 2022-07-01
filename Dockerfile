@@ -5,10 +5,13 @@ RUN apt-get update --fix-missing && \
     apt-get upgrade -y
 
 COPY requirements.txt /tmp/requirements.txt
-RUN pip install -r /tmp/requirements.txt && \
+RUN pip install --upgrade pip && \
+    pip install -r /tmp/requirements.txt && \
     rm /tmp/requirements.txt
 
-ADD machine_learning /opt/ml
+COPY machine_learning /opt/ml
 WORKDIR /opt/ml
+COPY gunicorn.py .
 
-CMD ["bash", "docker-entrypoint.sh"]
+COPY docker-entrypoint.sh /docker-entrypoint.sh
+CMD ["bash", "/docker-entrypoint.sh"]
