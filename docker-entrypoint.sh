@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
 echo "Starting Gunicorn..."
-exec gunicorn base.wsgi:application -c gunicorn.py
+exec gunicorn machine_learning.wsgi:application -c gunicorn.py

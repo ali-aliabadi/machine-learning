@@ -24,11 +24,3 @@ errorlog = '-'
 loglevel = os.environ.get('GUNICORN_LOG_LEVEL', 'info').lower()
 
 preload = True
-
-prometheus_port = int(os.environ.get('METRIC_PORT', 9000))
-
-
-def on_starting(server):
-    registry = prometheus_client.CollectorRegistry()
-    MultiProcessCollector(registry)
-    prometheus_client.start_http_server(prometheus_port, registry=registry)
