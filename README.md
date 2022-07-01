@@ -119,7 +119,7 @@ random sampler methods
 
 ## Swagger
 there is no swagger but instead use postman collection 
-which contain reach tests and samples.  
+which contain rich tests and samples.  
 load collection for sample and testing and use this readme for
 explanation
 
