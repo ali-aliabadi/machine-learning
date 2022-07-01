@@ -300,4 +300,4 @@ $RECYCLE.BIN/
 
 ## Other ignores
 .idea
-machine_learning/secrets.py
+machine_learning/ml_secrets.py

@@ -1,0 +1,11 @@
+---
+language: python
+
+before_install:
+  - pip install requirements.txt
+
+script:
+  - cd machine_learning && python manage.py test
+
+notifications:
+  email: false
